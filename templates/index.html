@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Rates</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;   
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1 style="text-align: center;">Currency Exchange Rates</h1>
+    
+    <form method="GET" action="/" style="text-align:center;">
+        <input type="date" name="date" required value="{{ today|safe }}">
+        <button type="submit">조회</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Currency</th>
+            <th id="current_date">Date</th>
+            <th><p style="text-align:center;">{{ selected_date }}</p></th>
+        </tr>
+        {% for currency, rate in rate.items() %}
+            <tr>
+                <td>{{ currency }}</td>
+                <td>{{ rate[0] }}</td>
+                <td>{{ rate[1] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <div id="current_date">
+        <script>
+            date = new Date();
+            year = date.getFullYear();
+            month = date.getMonth() + 1;
+            day = date.getDate();
+            document.getElementById("current_date").innerHTML = year +"-" + month + "-" + day ;
+        </script>
+    </div>
+
+</body>
+</html>
