@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 
 #REST API URL
-api_key = 'z260j295e191p057c040j080o1'
+api_key = 'APIKEY'
 
 def get_exchange_rates_by_date(date_str):
     url = f'https://unipass.customs.go.kr:38010/ext/rest/trifFxrtInfoQry/retrieveTrifFxrtInfo?crkyCn={api_key}&qryYymmDd={date_str}&imexTp=2'
@@ -48,4 +48,5 @@ def get_today_exchange_rates():
         }
         datatoday.append(row)
     dftoday = pd.DataFrame(datatoday)
+
     return dftoday
